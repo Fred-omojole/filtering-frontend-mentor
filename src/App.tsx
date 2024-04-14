@@ -35,6 +35,13 @@ const App = () => {
                 ) : null}
               </p>
             </div>
+<div>
+<h1>{job.position}</h1>
+
+</div>
+
+
+
           </div>
           {/* </div> */}
         </>
