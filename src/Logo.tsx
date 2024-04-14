@@ -1,7 +1,7 @@
 const Photo = ({ url, desc }: { url: string; desc: string }) => {
   return (
     <div>
-      <img src={url} alt={desc} width={50} height={50} />
+      <img src={url} alt={desc} width={100} height={100} />
     </div>
   );
 };

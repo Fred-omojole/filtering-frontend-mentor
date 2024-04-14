@@ -11,7 +11,7 @@ const App = () => {
         <>
           {/* <div className=""> */}
           <div
-            className="flex rounded-lg  space-y-2 gap-2 mt-5 bg-white p-5"
+            className="flex rounded-lg space-y-2  mt-4 bg-white p-5 relative"
             key={id}
           >
             <div>
@@ -35,13 +35,17 @@ const App = () => {
                 ) : null}
               </p>
             </div>
-<div>
-<h1>{job.position}</h1>
-
-</div>
-
-
-
+            <div className="text-black mx-20  h-0 ">
+              {/* <div className=""> */}
+                {" "}
+                <h1>{job.position}</h1>
+                <div className="flex mt-3">
+                  <p>{job.postedAt}</p>
+                  <p>{job.contract}</p>
+                  <p>{job.location}</p>
+                </div>
+              {/* </div> */}
+            </div>
           </div>
           {/* </div> */}
         </>
