@@ -50,16 +50,18 @@ const App = () => {
 
             <div className="w-full border-b-[2px] my-5 lg:border-none lg:m-0 lg:p-0 lg:w-0 relative bottom-5  "></div>
 
-            <div className=" text-xl  text-start gap-x-2 flex flex-wrap lg:flex-nowrap color1 font-semibold   lg:justify-end space-x-2">
+            <div className=" text-xl  text-start gap-x-2 flex flex-wrap lg:flex-nowrap color1 font-semibold p-2 gap-y-4 lg:justify-end space-x-2">
               <p className=" lg:text-xs bg-[hsl(180,31%,95%)] p-1">{job.role}</p>
               <p className="lg:text-xs bg-[hsl(180,31%,95%)] p-1">{job.level}</p>
               {/* <p className="text-xs bg-[hsl(180,31%,95%)] p-1">{job.tools}</p> */}
            {/* <div className="flex flex-wrap lg:flex-nowrap"> */}
+           
            {job.languages.map((item, index) => (
                 <p className=" lg:text-xs bg-[hsl(180,31%,95%)] p-1 mr-2 " key={index}>
                   {item}
                 </p>
               ))}
+           
 
            {/* </div> */}
             </div>
