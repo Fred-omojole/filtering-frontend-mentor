@@ -52,12 +52,12 @@ const App = () => {
 
             <div
               className=" 
-             flex flex-wrap lg:flex-nowrap color1 font-semibold p-2  lg:justify-end space-x-2 lg:m-auto lg:p-auto relative left-20"
+             flex flex-wrap lg:flex-nowrap color1 font-semibold p-2 gap-y-4 gap-2 lg:gap-0 lg:justify-end space-x-2 lg:m-auto lg:p-auto lg:relative lg:left-20"
             >
               <p className=" lg:text-xs bg-[hsl(180,31%,95%)] p-1">
                 {job.role}
               </p>
-              <p className="lg:text-xs bg-[hsl(180,31%,95%)] p-1">
+              <p className="lg:text-xs bg-[hsl(180,31%,95%)] p-1 ">
                 {job.level}
               </p>
               {/* <p className="text-xs bg-[hsl(180,31%,95%)] p-1">{job.tools}</p> */}
@@ -65,7 +65,7 @@ const App = () => {
 
               {job.languages.map((item, index) => (
                 <p
-                  className=" lg:text-xs bg-[hsl(180,31%,95%)] p-1 mr-2 "
+                  className=" lg:text-xs bg-[hsl(180,31%,95%)] p-1  relative right-2 lg:relative lg:right-auto"
                   key={index}
                 >
                   {item}
