@@ -3,10 +3,12 @@ import Photo from "./Logo";
 // import color from  "./index.css"
 const App = () => {
   // Destructuring using spread operator
-  const [...jobs] = Data;
+  const [first, ...jobs] = Data;
+  
 
   return (
     <>
+    
       {jobs.map((job, id) => (
         <>
           <div
@@ -65,7 +67,7 @@ const App = () => {
 
               {job.languages.map((item, index) => (
                 <p
-                  className=" lg:text-xs bg-[hsl(180,31%,95%)] p-1  relative right-2 lg:relative lg:right-auto hover:bg-[hsl(180,29%,50%)] hover:rounded hover:text-white  transition-all"
+                  className=" lg:text-xs bg-[hsl(180,31%,95%)] p-1  relative right-2 lg:relative lg:right-auto hover:bg-[hsl(180,29%,50%)] hover:rounded hover:text-white  transition-all "
                   key={index}
                 >
                   {item}
