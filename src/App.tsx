@@ -1,14 +1,33 @@
 import { Data } from "./lib/definition";
+import { useState } from "react";
 import Photo from "./Logo";
 // import color from  "./index.css"
 const App = () => {
   // Destructuring using spread operator
-  const [first, ...jobs] = Data;
-  
+  const [jobs, setJobs] = useState(Data);
+
+  const handleFilters = (filter: string) => {
+    return setJobs(() =>
+      Data.filter((job) => {
+        if (job.role !== filter) {
+          return true;
+        }
+
+        if (job.level !== filter) {
+          return true;
+        }
+
+        // finds what you look for in a list similar to map
+        const result = job.languages.find((language) => language === filter);
+        if (!result) {
+          return true;
+        }
+      })
+    );
+  };
 
   return (
     <>
-    
       {jobs.map((job, id) => (
         <>
           <div
