@@ -5,25 +5,25 @@ import Photo from "./Logo";
 const App = () => {
   // Destructuring using spread operator
   const [jobs, setJobs] = useState(Data);
+  // const [filteredJobs, setFilteredJobs] = useState([])
 
-  const handleFilters = (filter: string) => {
-    return setJobs(() =>
+  const handleFilter = (filter: string) => {
+    setJobs(() =>
       Data.filter((job) => {
-        if (job.role !== filter) {
+        if (job.role === filter) {
           return true;
         }
 
-        if (job.level !== filter) {
+        if (job.level === filter) {
           return true;
         }
 
-        // finds what you look for in a list similar to map
         const result = job.languages.find((language) => language === filter);
-        if (!result) {
-          return true;
-        }
+        if (result) return true;
       })
     );
+
+    // setJobs(() => Data.filter((job) => job.level === filter));
   };
 
   return (
@@ -76,13 +76,13 @@ const App = () => {
              flex flex-wrap lg:flex-nowrap color1 font-bold p-2 gap-y-4 gap-2 lg:gap-0 lg:justify-end space-x-2 lg:m-auto lg:p-auto lg:relative lg:left-20"
             >
               <p
-                onClick={() => handleFilters(job.role)}
+                onClick={() => handleFilter(job.role)}
                 className=" lg:text-xs bg-[hsl(180,31%,95%)] p-1 hover:bg-[hsl(180,29%,50%)] hover:rounded hover:text-white  transition-all"
               >
                 {job.role}
               </p>
               <p
-                onClick={() => handleFilters(job.level)}
+                onClick={() => handleFilter(job.level)}
                 className="lg:text-xs bg-[hsl(180,31%,95%)] p-1 hover:bg-[hsl(180,29%,50%)] hover:rounded hover:text-white  transition-all"
               >
                 {job.level}
@@ -92,7 +92,7 @@ const App = () => {
 
               {job.languages.map((item, index) => (
                 <p
-                  onClick={() => handleFilters(item)}
+                  onClick={() => handleFilter(item)}
                   className=" lg:text-xs bg-[hsl(180,31%,95%)] p-1  relative right-2 lg:relative lg:right-auto hover:bg-[hsl(180,29%,50%)] hover:rounded hover:text-white  transition-all "
                   key={index}
                 >
