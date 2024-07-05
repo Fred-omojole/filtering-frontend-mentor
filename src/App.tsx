@@ -1,10 +1,13 @@
 import { Data } from "./lib/definition";
 import { useState } from "react";
 import Photo from "./Logo";
+import ActiveInput from "./ActiveInput";
 // import color from  "./index.css"
 const App = () => {
   // Destructuring using spread operator
   const [jobs, setJobs] = useState(Data);
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
+
   // const [filteredJobs, setFilteredJobs] = useState([])
 
   const handleFilter = (filter: string) => {
@@ -23,16 +26,39 @@ const App = () => {
       })
     );
 
-    // setJobs(() => Data.filter((job) => job.level === filter));
+    setActiveFilters((prevFilters) => {
+      if (prevFilters.includes(filter)) {
+        return prevFilters;
+      }
+      return [...prevFilters, filter];
+    });
   };
+
+  const deleteAll = () => {
+    setJobs(Data);
+    setActiveFilters([]);
+  };
+
+  const handleDelete = (filter: string) => {
+    setActiveFilters((prevFilters) => prevFilters.filter((f) => f !== filter));
+  };
+
+  // setJobs(() => Data.filter((job) => job.level === filter));
 
   return (
     <>
+      {activeFilters.length > 0 ? (
+        <ActiveInput
+          onDeleteAll={deleteAll}
+          activeFilters={activeFilters}
+          onHandleDelete={handleDelete}
+        />
+      ) : null}
       {jobs.map((job, id) => (
         <>
           <div
-            className="grid grid-cols-1 lg:flex rounded-lg mt-16 drop-shadow-xl bg-white p-6"
             key={id}
+            className="grid grid-cols-1 lg:flex rounded-lg mt-16 drop-shadow-xl bg-white p-6"
           >
             <div className=" relative bottom-14 items-center lg:mb-2 w-20  lg:w-auto lg:p-4 lg:relative lg:bottom-auto">
               <Photo url={job.logo} desc={"image"} />
@@ -41,7 +67,7 @@ const App = () => {
             <div className="grid grid-cols-1 text-lg lg:text-xs gap-3 ml-3 tracking-tight relative bottom-8 lg:bottom-auto lg:relative  ">
               {/* <div className="space-y-[-2]"> */}
               <div className="flex items-center gap-2 ">
-                <p className="color1 font-bold text-lg ">{job.company}</p>
+                {/* <p className="color1 font-bold text-lg ">{job.company}</p> */}
                 <p>
                   {job.new ? (
                     <p className="text-white font-semibold bg-[hsl(180,29%,50%)] rounded-full p-2">
